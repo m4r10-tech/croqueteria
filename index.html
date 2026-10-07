@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css?v=4" />
+  <link rel="stylesheet" href="css/styles.css?v=7" />
 </head>
 <body>
   <!-- Pantalla de carga -->
@@ -55,6 +55,15 @@
         <div class="blob blob--1"></div>
         <div class="blob blob--2"></div>
         <div class="blob blob--3"></div>
+      </div>
+      <div class="hero__photos" id="heroPhotos" aria-hidden="true">
+        <figure class="hero__photo hero__photo--main">
+          <picture><source type="image/webp" srcset="assets/img/croquetas.webp" /><img src="assets/img/croquetas.jpg" alt="" fetchpriority="high" decoding="async" /></picture>
+        </figure>
+        <figure class="hero__photo hero__photo--side">
+          <picture><source type="image/webp" srcset="assets/img/cana.webp" /><img src="assets/img/cana.jpg" alt="" decoding="async" /></picture>
+        </figure>
+        <span class="hero__sticker">Hechas<br />en casa</span>
       </div>
       <div class="hero__floating" id="floating" aria-hidden="true"></div>
       <div class="hero__content container">
@@ -192,6 +201,7 @@
     <section class="section container" id="galeria">
       <p class="eyebrow reveal">Galería</p>
       <h2 class="section__title reveal">Un vistazo <em>al bar</em></h2>
+      <p class="section__lead reveal">Lo que te espera: croquetas, cañas, bocatas y terraza. <button type="button" class="link-btn" data-credits>Fotos ilustrativas · ver créditos</button></p>
       <div class="gallery" id="gallery"></div>
     </section>
 
@@ -319,6 +329,7 @@
     </div>
     <div class="container footer__bottom">
       <span>© <span id="year"></span> Croquetería · Toledo</span>
+      <button type="button" class="link-btn link-btn--light" data-credits>Créditos de las fotos</button>
       <span>Croquetas comidas en esta web: <strong id="eaten">0</strong></span>
     </div>
   </footer>
@@ -337,7 +348,7 @@
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <canvas id="confetti" aria-hidden="true"></canvas>
 
-  <script src="js/data.js?v=4"></script>
-  <script src="js/main.js?v=4"></script>
+  <script src="js/data.js?v=7"></script>
+  <script src="js/main.js?v=7"></script>
 </body>
 </html>

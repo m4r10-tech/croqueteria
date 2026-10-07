@@ -46,9 +46,9 @@ window.BAR = {
      Variedades orientativas: la pizarra del día manda.
      Las marcadas con "destacada" aparecen en reseñas (boletus, secreto ibérico). */
   croquetas: [
-    { nombre: "Jamón ibérico", desc: "La clásica de la abuela, con bechamel cremosa y jamón de bellota.", tags: ["clásica"], destacada: true },
-    { nombre: "Boletus", desc: "Setas boletus con un toque de trufa. Las que más piden.", tags: ["vegetariana"], destacada: true },
-    { nombre: "Cocido", desc: "Aprovechamiento del cocido: garbanzo, carne y tocino.", tags: ["clásica"] },
+    { nombre: "Jamón ibérico", foto: "jamon", desc: "La clásica de la abuela, con bechamel cremosa y jamón de bellota.", tags: ["clásica"], destacada: true },
+    { nombre: "Boletus", foto: "boletus", desc: "Setas boletus con un toque de trufa. Las que más piden.", tags: ["vegetariana"], destacada: true },
+    { nombre: "Cocido", foto: "cocido", desc: "Aprovechamiento del cocido: garbanzo, carne y tocino.", tags: ["clásica"] },
     { nombre: "Pollo asado", desc: "Pollo de corral desmigado con su jugo.", tags: ["clásica"] },
     { nombre: "Queso azul", desc: "Cabrales cremoso con nuez tostada.", tags: ["vegetariana", "intensa"] },
     { nombre: "Chipirón en su tinta", desc: "Negra, marinera y muy melosa.", tags: ["mar"] },
@@ -119,6 +119,22 @@ window.BAR = {
     { icono: "croqueta", titulo: "Unas 30 variedades", texto: "Una de las listas de croquetas más largas de Toledo, hechas en casa." },
     { icono: "heart", titulo: "Trato familiar", texto: "Los dueños están detrás de la barra y se nota en cada detalle." }
   ],
+
+  /* ---------- FOTOS ----------
+     Fotos reales con licencia libre de Wikimedia Commons (ilustrativas, no son del local).
+     Redimensionadas y, en el caso de la terraza, recortadas. Sustitúyelas por fotos
+     propias del bar dejando el archivo en assets/img/ con el mismo nombre. */
+  fotos: {
+    croquetas: { alt: "Dos croquetas caseras en un plato blanco", autor: "Juan Emilio Prades Bel", licencia: "CC BY 4.0", licenciaUrl: "https://creativecommons.org/licenses/by/4.0/", fuente: "https://commons.wikimedia.org/wiki/File:Croquetas.jpg" },
+    boletus: { alt: "Croquetas de boletus con patatas", autor: "Eduardo Milla", licencia: "CC BY-SA 4.0", licenciaUrl: "https://creativecommons.org/licenses/by-sa/4.0/", fuente: "https://commons.wikimedia.org/wiki/File:Croquetas_de_boletus.jpg" },
+    surtido: { alt: "Plato con un surtido de croquetas", autor: "Tamorlan", licencia: "CC BY 3.0", licenciaUrl: "https://creativecommons.org/licenses/by/3.0/", fuente: "https://commons.wikimedia.org/wiki/File:Surtido_de_Croquetas.jpg" },
+    jamon: { alt: "Croquetas de jamón pinchadas con un palillo", autor: "Tamorlan", licencia: "CC BY 3.0", licenciaUrl: "https://creativecommons.org/licenses/by/3.0/", fuente: "https://commons.wikimedia.org/wiki/File:Croquetas-Jam%C3%B3n-Riofr%C3%ADo.jpg" },
+    cocido: { alt: "Croquetas de cocido con alioli en cazuela de barro", autor: "Juan Emilio Prades Bel", licencia: "CC BY-SA 4.0", licenciaUrl: "https://creativecommons.org/licenses/by-sa/4.0/", fuente: "https://commons.wikimedia.org/wiki/File:Croquetas_caseras_de_carne_de_cocido_con_allioli.jpg" },
+    bocadillo: { alt: "Bocadillo de calamares", autor: "Tamorlan", licencia: "CC BY 3.0", licenciaUrl: "https://creativecommons.org/licenses/by/3.0/", fuente: "https://commons.wikimedia.org/wiki/File:Bocadillo_de_calamares-2009.jpg" },
+    desayuno: { alt: "Café con leche y tostadas", autor: "Jorge Gonzalez", licencia: "CC BY-SA 2.0", licenciaUrl: "https://creativecommons.org/licenses/by-sa/2.0/", fuente: "https://commons.wikimedia.org/wiki/File:Caf%C3%A9_con_leche_and_tostadas.jpg" },
+    cana: { alt: "Caña de cerveza con una tapa de sardina en la barra", autor: "Tamorlan", licencia: "CC BY 3.0", licenciaUrl: "https://creativecommons.org/licenses/by/3.0/", fuente: "https://commons.wikimedia.org/wiki/File:Sardina_y_Ca%C3%B1a_097.jpg" },
+    terraza: { alt: "Terraza con mesas altas y taburetes", autor: "MottaW", licencia: "CC BY 4.0", licenciaUrl: "https://creativecommons.org/licenses/by/4.0/", fuente: "https://commons.wikimedia.org/wiki/File:M-terraza-la-rinconada-wamba-junio-2024-a.jpg" }
+  },
 
   cercanos: [
     "Plaza Poeta Federico García Lorca",

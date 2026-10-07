@@ -21,6 +21,14 @@
     set(key, value) { try { localStorage.setItem(key, JSON.stringify(value)); } catch { /* sin almacenamiento */ } }
   };
 
+  /* ---------- Fotos ---------- */
+  function pic(key, { eager = false, sizes = "100vw" } = {}) {
+    const f = BAR.fotos[key];
+    if (!f) return "";
+    return `<picture><source type="image/webp" srcset="assets/img/${key}.webp" sizes="${sizes}" />` +
+      `<img src="assets/img/${key}.jpg" alt="${f.alt}" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async" /></picture>`;
+  }
+
   /* ---------- Toast ---------- */
   const toastEl = $("#toast");
   let toastTimer;
@@ -230,10 +238,10 @@
   const EAT_MSGS = ["¡Ñam! 😋", "Otra más…", "Crujiente por fuera, cremosa por dentro", "¿Te pedimos una ración?", "Esta era de boletus", "¡Glotón/a!"];
 
   function spawnCroquetas() {
-    const spots = [
-      [72, 18, 1.2], [86, 42, 0.9], [64, 62, 1.5], [90, 78, 0.8], [52, 85, 1],
-      [78, 6, 0.7], [40, 12, 0.6], [95, 22, 0.6]
-    ];
+    const wide = window.matchMedia("(min-width: 1081px)").matches;
+    const spots = wide
+      ? [[48, 14, 0.8], [52, 97, 1.1], [94, 88, 0.9], [47, 88, 0.7], [62, 6, 0.6], [97, 8, 0.6], [52, 40, 0.5], [86, 96, 0.5]]
+      : [[72, 18, 1.2], [86, 42, 0.9], [64, 62, 1.5], [90, 78, 0.8], [52, 85, 1], [78, 6, 0.7], [40, 12, 0.6], [95, 22, 0.6]];
     floating.innerHTML = "";
     spots.forEach(([x, y, s], i) => {
       const c = document.createElement("span");
@@ -257,6 +265,7 @@
     });
   }
 
+  const heroPhotos = $("#heroPhotos");
   function parallax() {
     if (reduceMotion || !finePointer) return;
     let mx = 0, my = 0, cx = 0, cy = 0;
@@ -267,6 +276,7 @@
     (function loop() {
       cx += (mx - cx) * 0.06; cy += (my - cy) * 0.06;
       if (window.scrollY < window.innerHeight) {
+        if (heroPhotos) heroPhotos.style.translate = `${cx * -24}px ${cy * -18 + window.scrollY * -0.12}px`;
         $$(".croq", floating).forEach((c) => {
           const d = Number(c.dataset.depth);
           c.style.transform = `translate(${cx * 60 * d}px, ${cy * 60 * d + window.scrollY * 0.25 * d}px) rotate(var(--rot))`;
@@ -394,7 +404,7 @@
     $("#croqGrid").innerHTML = list.map((c, i) => {
       const n = plate.get(c.nombre) || 0;
       return `<article class="croq-card" style="animation-delay:${Math.min(i, 12) * 35}ms" data-name="${c.nombre}">
-        <span class="croq" aria-hidden="true"></span>
+        ${c.foto ? `<span class="croq-photo">${pic(c.foto, { sizes: "64px" })}</span>` : '<span class="croq" aria-hidden="true"></span>'}
         ${c.destacada ? '<span class="badge">★ Top</span>' : ""}
         <h3>${c.nombre}</h3>
         <p>${c.desc}</p>
@@ -509,14 +519,14 @@
     fachada: `<svg class="art" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice"><rect width="400" height="300" fill="#cfe6ea"/><rect x="30" y="70" width="340" height="200" fill="#1f8a8f"/><rect x="30" y="70" width="340" height="40" fill="#2b1a10"/><text x="200" y="98" text-anchor="middle" font-family="Georgia,serif" font-size="22" font-weight="700" fill="#f5c46b">CROQUETERÍA</text><g fill="#bfe3e6" opacity=".9"><rect x="55" y="130" width="90" height="90" rx="6"/><rect x="255" y="130" width="90" height="90" rx="6"/></g><rect x="170" y="130" width="60" height="140" rx="4" fill="#2b1a10"/><circle cx="220" cy="200" r="3" fill="#f5c46b"/><rect y="270" width="400" height="30" fill="#b8a98f"/><g fill="#e2a23b"><rect x="70" y="170" width="30" height="16" rx="8" transform="rotate(-15 85 178)"/><rect x="290" y="180" width="30" height="16" rx="8" transform="rotate(12 305 188)"/></g></svg>`
   };
   const GALLERY = [
-    { art: "plato", t: "La especialidad", s: "Unas 30 variedades de croqueta" },
-    { art: "terraza", t: "Terraza techada", s: "Amplia y a cubierto" },
-    { art: "cana", t: "Cañas fresquitas", s: "Bien tiradas" },
-    { art: "fachada", t: "El local", s: "P.º Federico García Lorca, 10" },
-    { art: "desayuno", t: "Desayunos", s: "Desde las 8:00" },
-    { art: "bocadillo", t: "Bocadillos", s: "Para todos los gustos" }
+    { foto: "surtido", art: "plato", t: "La especialidad", s: "Unas 30 variedades de croqueta" },
+    { foto: "terraza", art: "terraza", t: "Tardes de terraza", s: "Amplia y a cubierto" },
+    { foto: "cana", art: "cana", t: "Cañas fresquitas", s: "Con su tapa" },
+    { foto: "boletus", art: "plato", t: "Croquetas de boletus", s: "De las más pedidas" },
+    { foto: "desayuno", art: "desayuno", t: "Desayunos", s: "Desde las 8:00" },
+    { foto: "bocadillo", art: "bocadillo", t: "Bocadillos", s: "Como el de calamares" }
   ];
-  function tileArt(g) { return g.img ? `<img src="${g.img}" alt="${g.t}" loading="lazy" />` : ART[g.art]; }
+  function tileArt(g, big = false) { return g.foto && BAR.fotos[g.foto] ? pic(g.foto, { sizes: big ? "100vw" : "(max-width: 600px) 100vw, 50vw" }) : ART[g.art]; }
   function renderGallery() {
     $("#gallery").innerHTML = GALLERY.map((g, i) => `
       <button class="tile reveal" type="button" data-i="${i}" aria-label="Ampliar: ${g.t}">
@@ -527,9 +537,27 @@
       const tile = e.target.closest(".tile");
       if (!tile) return;
       const g = GALLERY[tile.dataset.i];
-      openModal(`<div class="lightbox"><div class="tile__art">${tileArt(g)}</div></div>
-        <div class="lightbox__caption"><strong>${g.t}</strong><span>${g.s}</span></div>`, true);
+      openModal(`<div class="lightbox"><div class="tile__art">${tileArt(g, true)}</div></div>
+        <div class="lightbox__caption"><strong>${g.t}</strong><span>${g.s}</span>${g.foto ? `<small>Foto: ${BAR.fotos[g.foto].autor} · ${BAR.fotos[g.foto].licencia}</small>` : ""}</div>`, true);
     });
+  }
+
+  function setupCredits() {
+    $$("[data-credits]").forEach((b) => b.addEventListener("click", () => {
+      const rows = Object.entries(BAR.fotos).map(([k, f]) => `
+        <li>
+          <span class="credit__thumb">${pic(k, { sizes: "56px" })}</span>
+          <span><strong>${f.alt}</strong><br />
+          <a href="${f.fuente}" target="_blank" rel="noopener">${f.autor}</a> ·
+          <a href="${f.licenciaUrl}" target="_blank" rel="noopener">${f.licencia}</a></span>
+        </li>`).join("");
+      openModal(`<div class="credits">
+        <p class="eyebrow">Créditos</p>
+        <h3 id="modalTitle">Fotos de la web</h3>
+        <p>Fotos reales de Wikimedia Commons con licencia libre, usadas como ilustración (no son del local). Han sido redimensionadas y, en algún caso, recortadas.</p>
+        <ul class="credit-list">${rows}</ul>
+      </div>`);
+    }));
   }
 
   /* ==========================================================
@@ -861,6 +889,7 @@
   renderSchedule();
   setupMenu();
   renderGallery();
+  setupCredits();
   renderBars();
   setupSlider();
   setupBooking();
@@ -884,10 +913,11 @@
   document.body.classList.add("is-loading");
   const hideLoader = () => {
     const l = $("#loader");
-    if (l.classList.contains("is-done")) return;
+    if (!l || l.classList.contains("is-done")) return;
     l.classList.add("is-done");
+    setTimeout(() => l.remove(), 800);
     document.body.classList.remove("is-loading");
-    setTimeout(() => $("#heroTitle").classList.add("is-in"), 150);
+    setTimeout(() => { $("#heroTitle").classList.add("is-in"); $("#inicio").classList.add("is-ready"); }, 150);
     // El bloqueo de scroll del loader anula el salto al ancla: lo repetimos
     let target = null;
     try { target = location.hash.length > 1 ? document.getElementById(decodeURIComponent(location.hash.slice(1))) : null; } catch { target = null; }
