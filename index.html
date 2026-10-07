@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Croquetería · Bar Restaurante en el Polígono de Toledo</title>
+  <meta name="description" content="Bar Restaurante Croquetería en Santa María de Benquerencia (Toledo). Unas 30 variedades de croquetas caseras, desayunos, raciones, bocadillos y terraza techada. Abierto de 8:00 a 24:00, martes cerrado." />
+  <meta name="theme-color" content="#2b1a10" />
+  <meta property="og:title" content="Croquetería · Toledo" />
+  <meta property="og:description" content="Unas 30 variedades de croquetas caseras en el Polígono de Toledo. Terraza techada, desayunos y raciones." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css?v=4" />
+</head>
+<body>
+  <!-- Pantalla de carga -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__croqueta"></div>
+    <p class="loader__text">Friendo croquetas<span>.</span><span>.</span><span>.</span></p>
+  </div>
+
+  <div class="progress" id="progress"></div>
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+  <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+
+  <!-- Navegación -->
+  <header class="nav" id="nav">
+    <a href="#inicio" class="nav__logo" aria-label="Croquetería, inicio">
+      <span class="nav__logo-icon"></span>
+      <span>Croque<em>tería</em></span>
+    </a>
+    <nav class="nav__links" id="navLinks" aria-label="Principal">
+      <a href="#nosotros">Nosotros</a>
+      <a href="#estado">¿Abierto?</a>
+      <a href="#horario">Horario</a>
+      <a href="#carta">Carta</a>
+      <a href="#galeria">Galería</a>
+      <a href="#resenas">Reseñas</a>
+      <a href="#ubicacion">Cómo llegar</a>
+      <a href="#reservas" class="nav__cta">Reservar</a>
+    </nav>
+    <span class="status-pill" id="navStatus"><i></i><b>…</b></span>
+    <button class="nav__burger" id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+      <div class="hero__bg">
+        <div class="blob blob--1"></div>
+        <div class="blob blob--2"></div>
+        <div class="blob blob--3"></div>
+      </div>
+      <div class="hero__floating" id="floating" aria-hidden="true"></div>
+      <div class="hero__content container">
+        <p class="eyebrow reveal">Santa María de Benquerencia · Toledo</p>
+        <h1 class="hero__title" id="heroTitle">Croquetas caseras <em>de verdad</em></h1>
+        <p class="hero__lead reveal">Unas <strong>30 variedades</strong> hechas en casa, desayunos desde las 8:00, raciones, bocadillos y una terraza amplia y techada en pleno Polígono.</p>
+        <div class="hero__actions reveal">
+          <a href="#carta" class="btn btn--primary magnetic">Ver la carta</a>
+          <a href="#reservas" class="btn btn--ghost magnetic">Reservar mesa</a>
+        </div>
+        <div class="hero__meta reveal">
+          <span class="status-pill status-pill--lg" id="heroStatus"><i></i><b>Comprobando…</b></span>
+          <a class="hero__rating" href="#resenas">
+            <span class="stars" style="--rating:4.1"></span>
+            <span><strong>4,1</strong> · 184 reseñas en Google</span>
+          </a>
+        </div>
+      </div>
+      <a href="#nosotros" class="hero__scroll" aria-label="Bajar">
+        <span></span>
+      </a>
+    </section>
+
+    <!-- Cinta de sabores -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track" id="marquee"></div>
+    </div>
+
+    <!-- CIFRAS -->
+    <section class="stats container" aria-label="El bar en cifras">
+      <div class="stat reveal"><span class="stat__num" data-count="30" data-prefix="~">0</span><span class="stat__label">variedades de croqueta</span></div>
+      <div class="stat reveal"><span class="stat__num" data-count="4.1" data-decimals="1">0</span><span class="stat__label">valoración media en Google</span></div>
+      <div class="stat reveal"><span class="stat__num" data-count="184">0</span><span class="stat__label">reseñas de clientes</span></div>
+      <div class="stat reveal"><span class="stat__num" data-count="96">0</span><span class="stat__label">horas abiertos a la semana</span></div>
+    </section>
+
+    <!-- NOSOTROS -->
+    <section class="section about container" id="nosotros">
+      <div class="about__text">
+        <p class="eyebrow reveal">Nuestro bar</p>
+        <h2 class="section__title reveal">Un bar de barrio con alma de <em>croquetería</em></h2>
+        <p class="reveal">En el Paseo Federico García Lorca, junto a la plaza del poeta, servimos desde el primer café de la mañana hasta la última caña de la noche. Nuestra especialidad está en el nombre: croquetas caseras, cremosas por dentro y crujientes por fuera, en una lista que cambia según el mercado y la temporada.</p>
+        <p class="reveal">Y si no te apetece croqueta (que lo dudamos), tenemos raciones para compartir, bocadillos contundentes y nuestro famoso <strong>wok de secreto ibérico</strong>.</p>
+      </div>
+      <div class="about__cards" id="services"></div>
+    </section>
+
+    <!-- ESTADO EN DIRECTO -->
+    <section class="section live" id="estado">
+      <div class="container live__inner">
+        <div class="live__clock reveal">
+          <svg viewBox="0 0 200 200" class="clock" aria-hidden="true">
+            <circle cx="100" cy="100" r="92" class="clock__face" />
+            <g id="clockTicks"></g>
+            <path id="clockArc" class="clock__arc" />
+            <line id="clockH" x1="100" y1="100" x2="100" y2="55" class="clock__hand clock__hand--h" />
+            <line id="clockM" x1="100" y1="100" x2="100" y2="35" class="clock__hand clock__hand--m" />
+            <line id="clockS" x1="100" y1="110" x2="100" y2="28" class="clock__hand clock__hand--s" />
+            <circle cx="100" cy="100" r="5" class="clock__pin" />
+          </svg>
+        </div>
+        <div class="live__info">
+          <p class="eyebrow eyebrow--light reveal">En directo · hora de Toledo</p>
+          <h2 class="live__title reveal" id="liveTitle">¿Estamos abiertos?</h2>
+          <p class="live__sub reveal" id="liveSub"></p>
+          <div class="countdown reveal" id="countdown" aria-live="polite">
+            <div><span id="cdH">00</span><small>horas</small></div>
+            <div><span id="cdM">00</span><small>min</small></div>
+            <div><span id="cdS">00</span><small>seg</small></div>
+          </div>
+          <p class="live__label reveal" id="cdLabel"></p>
+          <div class="daybar reveal" aria-hidden="true">
+            <div class="daybar__open" id="daybarOpen"></div>
+            <div class="daybar__now" id="daybarNow"></div>
+            <div class="daybar__scale"><span>0h</span><span>6h</span><span>12h</span><span>18h</span><span>24h</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HORARIO -->
+    <section class="section container" id="horario">
+      <p class="eyebrow reveal">Horario</p>
+      <h2 class="section__title reveal">Abrimos <em>seis días</em> a la semana</h2>
+      <p class="section__lead reveal">De 8:00 de la mañana a medianoche. Los martes descansamos. En festivos el horario puede cambiar: si tienes dudas, llámanos.</p>
+      <div class="schedule" id="schedule"></div>
+    </section>
+
+    <!-- CARTA -->
+    <section class="section menu" id="carta">
+      <div class="container">
+        <p class="eyebrow reveal">La carta</p>
+        <h2 class="section__title reveal">Elige tu <em>croqueta</em></h2>
+        <p class="section__lead reveal">Variedades orientativas: la pizarra del día manda. Marca tus favoritas y monta tu ración mixta.</p>
+
+        <div class="tabs reveal" role="tablist" id="menuTabs"></div>
+
+        <div class="menu__panel" id="panelCroquetas" role="tabpanel">
+          <div class="menu__tools">
+            <label class="search">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+              <input type="search" id="croqSearch" placeholder="Busca un sabor… (boletus, jamón, picante)" aria-label="Buscar croqueta" />
+            </label>
+            <div class="chips" id="croqFilters"></div>
+          </div>
+          <div class="croq-grid" id="croqGrid"></div>
+          <p class="empty" id="croqEmpty" hidden>No hay croquetas con ese nombre… todavía. ¡Pregúntanos!</p>
+
+          <aside class="plate" id="plate" aria-live="polite">
+            <div class="plate__visual" id="plateVisual"></div>
+            <div class="plate__info">
+              <strong>Tu ración mixta</strong>
+              <span id="plateText">Toca el + de las croquetas para añadirlas.</span>
+            </div>
+            <button class="btn btn--small" id="plateClear" type="button">Vaciar</button>
+          </aside>
+
+          <div class="roulette reveal">
+            <div>
+              <h3>¿No sabes cuál pedir?</h3>
+              <p>Deja que la ruleta elija por ti.</p>
+            </div>
+            <div class="roulette__window"><span id="rouletteText">?</span></div>
+            <button class="btn btn--primary magnetic" id="rouletteBtn" type="button">Girar</button>
+          </div>
+        </div>
+
+        <div class="menu__panel" id="panelOtros" role="tabpanel" hidden>
+          <div class="dish-list" id="dishList"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERÍA -->
+    <section class="section container" id="galeria">
+      <p class="eyebrow reveal">Galería</p>
+      <h2 class="section__title reveal">Un vistazo <em>al bar</em></h2>
+      <div class="gallery" id="gallery"></div>
+    </section>
+
+    <!-- RESEÑAS -->
+    <section class="section reviews" id="resenas">
+      <div class="container reviews__inner">
+        <div class="reviews__summary reveal">
+          <p class="eyebrow eyebrow--light">Lo que dicen</p>
+          <div class="reviews__score"><span data-count="4.1" data-decimals="1">0</span><small>/5</small></div>
+          <span class="stars stars--lg" style="--rating:4.1"></span>
+          <p class="reviews__total"><span data-count="184">0</span> reseñas en Google</p>
+          <div class="bars" id="bars"></div>
+        </div>
+        <div class="reviews__slider reveal">
+          <div class="slider" id="slider" aria-roledescription="carrusel"></div>
+          <div class="slider__nav">
+            <button type="button" id="prevReview" aria-label="Reseña anterior">←</button>
+            <div class="slider__dots" id="dots"></div>
+            <button type="button" id="nextReview" aria-label="Reseña siguiente">→</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESERVAS -->
+    <section class="section container booking" id="reservas">
+      <div class="booking__intro">
+        <p class="eyebrow reveal">Reservas</p>
+        <h2 class="section__title reveal">Guárdate <em>una mesa</em></h2>
+        <p class="reveal">Rellena el formulario y te preparamos el mensaje para confirmar por teléfono. Para grupos grandes o la terraza en fin de semana, mejor reservar con antelación.</p>
+        <a class="phone-card reveal" id="phoneCard" href="tel:+34925973747">
+          <span class="phone-card__icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>
+          </span>
+          <span><small>Llámanos</small><strong>925 97 37 47</strong></span>
+        </a>
+      </div>
+      <form class="form reveal" id="bookingForm" novalidate>
+        <div class="field">
+          <label for="fName">Nombre</label>
+          <input id="fName" name="name" type="text" autocomplete="name" required placeholder="Tu nombre" />
+          <small class="field__error"></small>
+        </div>
+        <div class="field">
+          <label for="fPhone">Teléfono</label>
+          <input id="fPhone" name="phone" type="tel" autocomplete="tel" required placeholder="600 000 000" />
+          <small class="field__error"></small>
+        </div>
+        <div class="field">
+          <label for="fDate">Día</label>
+          <input id="fDate" name="date" type="date" required />
+          <small class="field__error"></small>
+        </div>
+        <div class="field">
+          <label for="fTime">Hora</label>
+          <select id="fTime" name="time" required></select>
+          <small class="field__error"></small>
+        </div>
+        <div class="field field--full">
+          <span class="label">Personas</span>
+          <div class="stepper">
+            <button type="button" id="pplMinus" aria-label="Una persona menos">−</button>
+            <output id="pplOut">2</output>
+            <button type="button" id="pplPlus" aria-label="Una persona más">+</button>
+            <div class="stepper__people" id="pplIcons" aria-hidden="true"></div>
+          </div>
+        </div>
+        <div class="field field--full">
+          <span class="label">Zona</span>
+          <div class="segmented" role="radiogroup">
+            <label><input type="radio" name="zone" value="Terraza" checked /><span>Terraza</span></label>
+            <label><input type="radio" name="zone" value="Interior" /><span>Interior</span></label>
+            <label><input type="radio" name="zone" value="Me da igual" /><span>Me da igual</span></label>
+          </div>
+        </div>
+        <div class="field field--full">
+          <label for="fNotes">Comentarios</label>
+          <textarea id="fNotes" name="notes" rows="3" placeholder="Alergias, carrito de bebé, celebración…"></textarea>
+        </div>
+        <button class="btn btn--primary btn--block magnetic" type="submit">Preparar reserva</button>
+      </form>
+    </section>
+
+    <!-- UBICACIÓN -->
+    <section class="section location" id="ubicacion">
+      <div class="container location__inner">
+        <div class="location__info">
+          <p class="eyebrow reveal">Cómo encontrarnos</p>
+          <h2 class="section__title reveal">En el corazón <em>del Polígono</em></h2>
+          <ul class="info-list reveal">
+            <li><span>Dirección</span><strong>P.º Federico García Lorca, 10<br />45007 Toledo</strong></li>
+            <li><span>Barrio</span><strong>Santa María de Benquerencia</strong></li>
+            <li><span>Plus Code</span><strong>V384+J3 Toledo</strong></li>
+            <li><span>Teléfono</span><strong><a href="tel:+34925973747">925 97 37 47</a></strong></li>
+          </ul>
+          <p class="near-title reveal">Referencias cercanas</p>
+          <ul class="near reveal" id="near"></ul>
+          <div class="location__actions reveal">
+            <a class="btn btn--primary magnetic" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=39.8665473,-3.9448724">Cómo llegar</a>
+            <button class="btn btn--ghost" id="copyAddress" type="button">Copiar dirección</button>
+          </div>
+        </div>
+        <div class="map reveal">
+          <iframe title="Mapa: Bar Restaurante Croquetería" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://maps.google.com/maps?q=Bar%20restaurante%20Croqueteria%2C%20P.%C2%BA%20Federico%20Garc%C3%ADa%20Lorca%2010%2C%2045007%20Toledo&amp;z=17&amp;output=embed"></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>
+        <a href="#inicio" class="nav__logo nav__logo--footer"><span class="nav__logo-icon"></span><span>Croque<em>tería</em></span></a>
+        <p>Bar restaurante · Croquetas caseras · Terraza</p>
+      </div>
+      <div>
+        <p><strong>P.º Federico García Lorca, 10</strong><br />45007 Toledo</p>
+        <p><a href="tel:+34925973747">925 97 37 47</a></p>
+      </div>
+      <div>
+        <p><strong>Miércoles a lunes</strong> · 8:00 – 24:00<br />Martes cerrado</p>
+        <span class="status-pill" id="footStatus"><i></i><b>…</b></span>
+      </div>
+    </div>
+    <div class="container footer__bottom">
+      <span>© <span id="year"></span> Croquetería · Toledo</span>
+      <span>Croquetas comidas en esta web: <strong id="eaten">0</strong></span>
+    </div>
+  </footer>
+
+  <button class="to-top" id="toTop" aria-label="Volver arriba">↑</button>
+
+  <!-- Modal de reserva / visor de galería -->
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__box">
+      <button class="modal__close" data-close aria-label="Cerrar">×</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <canvas id="confetti" aria-hidden="true"></canvas>
+
+  <script src="js/data.js?v=4"></script>
+  <script src="js/main.js?v=4"></script>
+</body>
+</html>
