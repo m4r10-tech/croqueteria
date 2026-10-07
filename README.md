@@ -2,18 +2,16 @@
 
 Web del **Bar Restaurante Croquetería**, en el P.º Federico García Lorca, 10 (Santa María de Benquerencia, 45007 Toledo).
 
-Web estática en HTML, CSS y JavaScript, sin dependencias: no hace falta `npm install`.
+Web en HTML, CSS y JavaScript nativos.
 
-## Comandos
+## Arrancar
 
-| Comando | Qué hace |
-| --- | --- |
-| `npm run dev` | Sirve el código fuente en http://127.0.0.1:5173 sin caché, ideal mientras editas |
-| `npm run build` | Genera `dist/` con CSS/JS versionados por hash, lista para publicar |
-| `npm run preview` | Sirve `dist/` en http://127.0.0.1:4173 (ejecuta antes `npm run build`) |
-| `npm start` | `build` + `preview` de una vez |
+```bash
+npm install
+npm run preview
+```
 
-Si el puerto está ocupado, se usa el siguiente libre. Para verla desde el móvil en la misma red: `HOST=0.0.0.0 npm run dev`.
+Se abre en http://localhost:4173. Si el puerto está ocupado, `serve` usa otro y lo muestra en la terminal.
 
 ## Secciones
 

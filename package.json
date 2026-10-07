@@ -1,16 +1,10 @@
 {
   "name": "croqueteria",
-  "version": "1.0.0",
   "private": true,
-  "description": "Web del Bar Restaurante Croquetería · Santa María de Benquerencia, Toledo",
-  "type": "module",
   "scripts": {
-    "dev": "node scripts/serve.mjs . 5173",
-    "build": "node scripts/build.mjs",
-    "preview": "node scripts/serve.mjs dist 4173",
-    "start": "npm run build && npm run preview"
+    "preview": "serve . -l 4173"
   },
-  "engines": {
-    "node": ">=18"
+  "devDependencies": {
+    "serve": "^14.2.4"
   }
 }
